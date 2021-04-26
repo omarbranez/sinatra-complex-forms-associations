@@ -5,13 +5,24 @@
 
   <br>
 
-  <input type="text" name="owner[name]">
-
+  <input type="text" name="owner[name]"><br>
+  
   <h3>Existing Pets</h3>
   <% @pets.each do |pet| %>
     <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>"><%= pet.name %><br>
-  <% end %>
-  <br>
+    <% # pet_ids array is stored inside the owner hash %>
+    <% # the value is the pet.id so that gets passed into params %>
+    <% end %>
+    
+    <br>
+    and/or create a new pet:
+    <h3>New Pet</h3>
+    <label>Pet Name:</label>
+    <br>
+    <input type="text" name="pet[name]" id="pet_name"/>
+    <% # creates new pet and associates it with that new owner %>
+    <br>
 
-  <input type="submit" value="Create Owner">
+    <input type="submit" value="Create Owner">
+    
 </form>
